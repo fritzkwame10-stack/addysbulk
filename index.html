@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADDY's BULK | Wholesale & Retail Catalog</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --teal: #0d9488;
+    --teal-dark: #0f766e;
+    --teal-light: #ccfbf1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  .gradient-bg {
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
+  }
+  .product-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+  .category-btn {
+    transition: all 0.2s ease;
+  }
+  .category-btn.active {
+    background-color: var(--teal);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+  .img-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+  }
+  @keyframes shimmer {
+    to { background-position-x: -200%; }
+  }
+  .img-wrapper img {
+    transition: transform 0.5s ease;
+    opacity: 0;
+  }
+  .img-wrapper img.loaded {
+    opacity: 1;
+  }
+  .product-card:hover .img-wrapper img {
+    transform: scale(1.08);
+  }
+  .wa-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .8; transform: scale(1.05); }
+  }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-teal-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-3">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-teal-700 tracking-tight">ADDY's BULK</h1>
+          <p class="text-sm md:text-base text-gray-600 mt-1">Bulk & Retail | Delivery Available in Accra, Ghana</p>
+        </div>
+        <a href="https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t" 
+           target="_blank"
+           class="wa-pulse inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-3 rounded-full shadow-lg transition-all duration-300">
+          <i class="fab fa-whatsapp text-xl"></i>
+          <span>Join Our WhatsApp Group</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl md:text-4xl font-bold mb-3">Your #1 Source for Wholesale & Retail Products</h2>
+      <p class="text-teal-50 text-base md:text-lg max-w-2xl mx-auto">Quality mannequins, fashion, beauty, home goods, and more. We supply businesses and individuals across Ghana with bulk pricing.</p>
+    </div>
+  </section>
+
+  <!-- Search & Filter Section -->
+  <section class="sticky top-[104px] sm:top-[88px] z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-4 items-center">
+        <div class="relative w-full lg:w-1/3">
+          <input type="text" id="searchInput" placeholder="Search products..." 
+                 class="w-full pl-11 pr-4 py-3 rounded-full border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition">
+          <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+        </div>
+        <div class="w-full lg:w-2/3 overflow-x-auto">
+          <div id="categoryFilters" class="flex gap-2 pb-1">
+            <button data-category="all" class="category-btn active whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-teal-600 text-white">All Products</button>
+            <button data-category="mannequins" class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-teal-50">Mannequins & Display</button>
+            <button data-category="fashion" class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-teal-50">Fashion & Shapewear</button>
+            <button data-category="beauty" class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-teal-50">Beauty & Health</button>
+            <button data-category="home" class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-teal-50">Home & Storage</button>
+            <button data-category="kitchen" class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-teal-50">Kitchen Appliances</button>
+            <button data-category="bags" class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-teal-50">Bags & Accessories</button>
+            <button data-category="kids" class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-teal-50">Kids & Toys</button>
+            <button data-category="health" class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-teal-50">Health Devices</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Products will be inserted here by JS -->
+    </div>
+    <div id="noResults" class="hidden text-center py-16">
+      <i class="fas fa-box-open text-6xl text-gray-300 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-700">No products found</h3>
+      <p class="text-gray-500 mt-2">Try adjusting your search or filter to find what you're looking for.</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-teal-800 text-teal-50 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+        <div>
+          <h3 class="text-xl font-bold text-white mb-3">ADDY's BULK</h3>
+          <p class="text-sm text-teal-100">Your trusted partner for bulk and retail goods in Ghana. Quality products at competitive prices.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-3">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t" target="_blank" class="hover:text-white transition">WhatsApp Group</a></li>
+            <li><a href="#" class="hover:text-white transition" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-3">Contact Us</h4>
+          <p class="text-sm text-teal-100">Order via WhatsApp for fastest response</p>
+          <a href="https://wa.me/233000000000" class="inline-flex items-center gap-2 mt-3 text-white hover:text-teal-200 transition">
+            <i class="fab fa-whatsapp"></i> +233 00 000 0000
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-teal-700 mt-8 pt-6 text-center text-sm text-teal-200">
+        © 2026 ADDY's BULK | Accra, Ghana | Bulk & Retail | Delivery Available
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button Mobile -->
+  <a href="https://wa.me/233000000000" 
+     target="_blank"
+     class="fixed bottom-5 right-5 md:hidden bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-50">
+    <i class="fab fa-whatsapp text-3xl"></i>
+  </a>
+
+<script>
+  // Product Data: 37 items across 8 categories
+  const products = [
+    // 5 Mannequins & Display
+    {id: 1, name: "Female Full Body Mannequin", category: "mannequins", desc: "Detachable arms & head. Ideal for boutiques and fashion displays. Matte finish."},
+    {id: 2, name: "Male Torso Display Mannequin", category: "mannequins", desc: "Muscular torso for shirts & jackets. Includes metal base stand."},
+    {id: 3, name: "Child Mannequin - Age 5-7", category: "mannequins", desc: "Unisex child display dummy. Perfect for kids clothing stores."},
+    {id: 4, name: "Adjustable Dress Form", category: "mannequins", desc: "Pinnable mannequin with 12 dials. Great for tailors & designers."},
+    {id: 5, name: "Jewelry Bust Display Set", category: "mannequins", desc: "Velvet necklace & chain display stands. Set of 3 various heights."},
+    
+    // 5 Fashion & Shapewear
+    {id: 6, name: "Women's High Waist Shapewear", category: "fashion", desc: "Seamless tummy control shorts. Breathable fabric, all-day comfort."},
+    {id: 7, name: "Men's Slimming Vest", category: "fashion", desc: "Compression tank top for chest & abs. Instant slimming effect."},
+    {id: 8, name: "Ladies Waist Trainer Belt", category: "fashion", desc: "Adjustable latex trainer for workouts. Increases sweat & posture support."},
+    {id: 9, name: "Seamless Push-Up Bra", category: "fashion", desc: "Wire-free, invisible under clothes. Available in multiple colors."},
+    {id: 10, name: "Unisex Thermal Underwear Set", category: "fashion", desc: "Heat-lock technology for cold weather. Slim fit base layer."},
+    
+    // 5 Beauty & Health
+    {id: 11, name: "LED Facial Beauty Mask", category: "beauty", desc: "7-color light therapy for acne & anti-aging. Spa treatment at home."},
+    {id: 12, name: "Electric Blackhead Remover", category: "beauty", desc: "USB rechargeable pore vacuum with 4 suction heads."},
+    {id: 13, name: "Vitamin C Brightening Serum", category: "beauty", desc: "30ml bottle. Reduces dark spots & evens skin tone."},
+    {id: 14, name: "Silk Bonnet & Pillowcase Set", category: "beauty", desc: "Prevents hair breakage & face wrinkles. Satin material."},
+    {id: 15, name: "5-in-1 Electric Face Cleanser", category: "beauty", desc: "Deep cleanse, exfoliate & massage. Waterproof design."},
+    
+    // 5 Home & Storage
+    {id: 16, name: "3-Tier Folding Storage Rack", category: "home", desc: "Metal frame with wheels. No assembly required for kitchen/bathroom."},
+    {id: 17, name: "Vacuum Storage Bags 6-Pack", category: "home", desc: "Space saver for clothes & bedding. Includes hand pump."},
+    {id: 18, name: "Over-Door Shoe Organizer", category: "home", desc: "24 pockets clear organizer. Fits most standard doors."},
+    {id: 19, name: "Collapsible Fabric Storage Box", category: "home", desc: "66L capacity with lid & handles. Fold flat when not in use."},
+    {id: 20, name: "LED Motion Sensor Light", category: "home", desc: "USB rechargeable, stick-on for closets, stairs & cabinets."},
+    
+    // 5 Kitchen Appliances
+    {id: 21, name: "3-in-1 Breakfast Maker", category: "kitchen", desc: "Grill, coffee maker & oven combo. Compact for small kitchens."},
+    {id: 22, name: "Digital Air Fryer 5L", category: "kitchen", desc: "8 presets, non-stick basket. 80% less oil cooking."},
+    {id: 23, name: "Electric Portable Blender", category: "kitchen", desc: "380ml USB bottle blender for shakes & smoothies on-the-go."},
+    {id: 24, name: "Stainless Steel Cookware Set", category: "kitchen", desc: "10-piece pot & pan set with glass lids. Induction compatible."},
+    {id: 25, name: "Automatic Vegetable Chopper", category: "kitchen", desc: "One-touch electric dicer. 4 blades for slice, chop & mince."},
+    
+    // 4 Bags & Accessories
+    {id: 26, name: "Anti-Theft Travel Backpack", category: "bags", desc: "USB charging port, water-resistant. Hidden zippers for security."},
+    {id: 27, name: "Designer Tote Handbag", category: "bags", desc: "PU leather with gold hardware. Spacious interior + zip pocket."},
+    {id: 28, name: "RFID Blocking Wallet", category: "bags", desc: "Men's slim carbon fiber wallet. Holds 12 cards + cash."},
+    {id: 29, name: "Clear PVC Cosmetic Bag Set", category: "bags", desc: "3 sizes for travel. TSA approved, waterproof."},
+    
+    // 4 Kids & Toys
+    {id: 30, name: "STEM Robot Building Kit", category: "kids", desc: "190+ pieces, app controlled. Teaches coding basics for ages 8+."},
+    {id: 31, name: "Inflatable Kids Play Pool", category: "kids", desc: "3-ring pool 1.5m wide. Quick inflate & drain plug."},
+    {id: 32, name: "Educational Talking Flash Cards", category: "kids", desc: "224 words for toddler learning. USB rechargeable device."},
+    {id: 33, name: "Plush Unicorn Night Light", category: "kids", desc: "Soft silicone tap lamp. 7 color modes, timer function."},
+    
+    // 4 Health Devices
+    {id: 34, name: "Digital Blood Pressure Monitor", category: "health", desc: "Upper arm cuff with large LCD. Stores 90 readings for 2 users."},
+    {id: 35, name: "Infrared Thermometer Gun", category: "health", desc: "Non-contact forehead reader. 1-second instant result."},
+    {id: 36, name: "Fingertip Pulse Oximeter", category: "health", desc: "OLED display for SpO2 & heart rate. Batteries included."},
+    {id: 37, name: "Electric Heating Pad", category: "health", desc: "3 heat levels with auto-off. Machine washable cover."}
+  ];
+
+  const productsGrid = document.getElementById('productsGrid');
+  const searchInput = document.getElementById('searchInput');
+  const categoryFilters = document.getElementById('categoryFilters');
+  const noResults = document.getElementById('noResults');
+
+  let currentCategory = 'all';
+  let currentSearch = '';
+
+  function renderProducts() {
+    const filtered = products.filter(p => {
+      const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
+      const matchesSearch = p.name.toLowerCase().includes(currentSearch.toLowerCase()) || 
+                           p.desc.toLowerCase().includes(currentSearch.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+
+    productsGrid.innerHTML = '';
+    
+    if (filtered.length === 0) {
+      noResults.classList.remove('hidden');
+      return;
+    }
+    noResults.classList.add('hidden');
+
+    filtered.forEach(product => {
+      const waText = encodeURIComponent(`Hi ADDY's BULK, I'm interested in ${product.name}.`);
+      const waLink = `https://wa.me/233000000000?text=${waText}`;
+      
+      const card = document.createElement('div');
+      card.className = 'product-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col';
+      card.innerHTML = `
+        <div class="img-wrapper aspect-square">
+          <img src="./images/${product.id}.jpeg" 
+               alt="${product.name}" 
+               loading="lazy"
+               class="w-full h-full object-cover">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="font-bold text-lg text-gray-900 mb-1 line-clamp-2">${product.name}</h3>
+          <p class="text-teal-700 font-semibold mb-2">Contact for Price</p>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">${product.desc}</p>
+          <a href="${waLink}" 
+             target="_blank"
+             class="mt-auto inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2.5 rounded-lg transition-colors duration-200">
+            <i class="fab fa-whatsapp text-lg"></i>
+            <span>Order via WhatsApp</span>
+          </a>
+        </div>
+      `;
+      productsGrid.appendChild(card);
+      
+      // Handle image load for shimmer effect
+      const img = card.querySelector('img');
+      img.addEventListener('load', () => img.classList.add('loaded'));
+      img.addEventListener('error', () => {
+        img.src = `https://placehold.co/400x400/0d9488/ffffff?text=ADDY's+BULK`;
+        img.classList.add('loaded');
+      });
+    });
+  }
+
+  // Event Listeners
+  searchInput.addEventListener('input', (e) => {
+    currentSearch = e.target.value;
+    renderProducts();
+  });
+
+  categoryFilters.addEventListener('click', (e) => {
+    const btn = e.target.closest('.category-btn');
+    if (!btn) return;
+    
+    document.querySelectorAll('.category-btn').forEach(b => {
+      b.classList.remove('active', 'bg-teal-600', 'text-white');
+      b.classList.add('bg-white', 'text-gray-700');
+    });
+    
+    btn.classList.add('active', 'bg-teal-600', 'text-white');
+    btn.classList.remove('bg-white', 'text-gray-700');
+    
+    currentCategory = btn.dataset.category;
+    renderProducts();
+    window.scrollTo({top: productsGrid.offsetTop - 200, behavior: 'smooth'});
+  });
+
+  // Initial render
+  document.addEventListener('DOMContentLoaded', renderProducts);
+</script>
+</body>
+</html>
