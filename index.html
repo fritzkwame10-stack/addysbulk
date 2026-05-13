@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADDY's BULK | Bulk & Retail Products in Accra, Ghana</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+* { font-family: 'Poppins', sans-serif; }
+html { scroll-behavior: smooth; }
+.teal-gradient { background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%); }
+.card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+.product-img { aspect-ratio: 1/1; object-fit: cover; }
+.category-btn.active { background: #0d9488; color: white; }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Preload Images for JS Access -->
+<div hidden>
+  <img id="img-0" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.06.jpeg">
+  <img id="img-1" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.06_1.jpeg">
+  <img id="img-2" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.07.jpeg">
+  <img id="img-3" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.08_1.jpeg">
+  <img id="img-4" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.08_2.jpeg">
+  <img id="img-5" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.07_1.jpeg">
+  <img id="img-6" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.06_2.jpeg">
+  <img id="img-7" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.08.jpeg">
+  <img id="img-8" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.05.jpeg">
+  <img id="img-9" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.08_3.jpeg">
+  <img id="img-10" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.09_1.jpeg">
+  <img id="img-11" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.09_2.jpeg">
+  <img id="img-12" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.09_3.jpeg">
+  <img id="img-13" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.09.jpeg">
+  <img id="img-14" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.10_1.jpeg">
+  <img id="img-15" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.10_2.jpeg">
+  <img id="img-16" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.10.jpeg">
+  <img id="img-17" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.11_1.jpeg">
+  <img id="img-18" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.11_2.jpeg">
+  <img id="img-19" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.11.jpeg">
+  <img id="img-20" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.12_1.jpeg">
+  <img id="img-21" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.12.jpeg">
+  <img id="img-22" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.13_1.jpeg">
+  <img id="img-23" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.13_2.jpeg">
+  <img id="img-24" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.13_3.jpeg">
+  <img id="img-25" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.13.jpeg">
+  <img id="img-26" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.14_1.jpeg">
+  <img id="img-27" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.14_2.jpeg">
+  <img id="img-28" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.14_3.jpeg">
+  <img id="img-29" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.14.jpeg">
+  <img id="img-30" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.15_1.jpeg">
+  <img id="img-31" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.15_2.jpeg">
+  <img id="img-32" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.15_3.jpeg">
+  <img id="img-33" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.15.jpeg">
+  <img id="img-34" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.16_1.jpeg">
+  <img id="img-35" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.16_2.jpeg">
+  <img id="img-36" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.16_3.jpeg">
+  <img id="img-37" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.55.16.jpeg">
+  <img id="img-38" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_20.56.52.jpeg">
+  <img id="img-39" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_21.06.45.jpeg">
+  <img id="img-40" src="container:///mnt/data/WhatsApp_Image_2026-05-06_at_21.09.12.jpeg">
+  <img id="img-41" src="container:///mnt/data/WhatsApp_Image_2026-05-09_at_23.04.45.jpeg">
+</div>
+
+<!-- Header -->
+<header class="teal-gradient text-white sticky top-0 z-50 shadow-lg">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">ADDY's BULK</h1>
+          <p class="text-xs md:text-sm text-teal-50">Bulk & Retail | Accra, Ghana</p>
+        </div>
+        <a href="https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t" target="_blank" class="md:hidden bg-white text-teal-700 px-4 py-2 rounded-full text-sm font-semibold shadow-md hover:bg-teal-50 transition">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+      <a href="https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t" target="_blank" class="hidden md:flex items-center gap-2 bg-white text-teal-700 px-6 py-3 rounded-full font-semibold shadow-md hover:bg-teal-50 hover:scale-105 transition duration-300">
+        <i class="fab fa-whatsapp text-xl"></i>
+        <span>Join Our WhatsApp Group</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="teal-gradient text-white py-12 md:py-20">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4">Your One-Stop Wholesale & Retail Shop</h2>
+    <p class="text-lg md:text-xl text-teal-50 mb-6 max-w-2xl mx-auto">Quality products at unbeatable prices. Mannequins, fashion, beauty, home essentials & more. Delivery available nationwide.</p>
+    <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base">
+      <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full"><i class="fas fa-truck"></i> Delivery Available</span>
+      <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full"><i class="fas fa-box"></i> Bulk Orders</span>
+      <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full"><i class="fas fa-tag"></i> Best Prices</span>
+    </div>
+  </div>
+</section>
+
+<!-- Search & Filters -->
+<section class="bg-white border-b sticky top-[72px] md:top-[76px] z-40 glass shadow-sm">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex flex-col gap-4">
+      <div class="relative">
+        <input type="text" id="searchInput" placeholder="Search products..." class="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-gray-200 focus:border-teal-500 focus:outline-none transition">
+        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+      </div>
+      <div class="overflow-x-auto pb-2 -mx-4 px-4">
+        <div class="flex gap-2 w-max" id="categoryFilters">
+          <button data-category="all" class="category-btn active whitespace-nowrap px-5 py-2 rounded-full border-2 border-teal-600 font-medium transition">All Products</button>
+          <button data-category="Mannequins & Display" class="category-btn whitespace-nowrap px-5 py-2 rounded-full border-2 border-gray-300 hover:border-teal-600 font-medium transition">Mannequins & Display</button>
+          <button data-category="Fashion & Shapewear" class="category-btn whitespace-nowrap px-5 py-2 rounded-full border-2 border-gray-300 hover:border-teal-600 font-medium transition">Fashion & Shapewear</button>
+          <button data-category="Beauty & Health" class="category-btn whitespace-nowrap px-5 py-2 rounded-full border-2 border-gray-300 hover:border-teal-600 font-medium transition">Beauty & Health</button>
+          <button data-category="Home & Storage" class="category-btn whitespace-nowrap px-5 py-2 rounded-full border-2 border-gray-300 hover:border-teal-600 font-medium transition">Home & Storage</button>
+          <button data-category="Kitchen Appliances" class="category-btn whitespace-nowrap px-5 py-2 rounded-full border-2 border-gray-300 hover:border-teal-600 font-medium transition">Kitchen Appliances</button>
+          <button data-category="Bags & Accessories" class="category-btn whitespace-nowrap px-5 py-2 rounded-full border-2 border-gray-300 hover:border-teal-600 font-medium transition">Bags & Accessories</button>
+          <button data-category="Kids & Toys" class="category-btn whitespace-nowrap px-5 py-2 rounded-full border-2 border-gray-300 hover:border-teal-600 font-medium transition">Kids & Toys</button>
+          <button data-category="Health Devices" class="category-btn whitespace-nowrap px-5 py-2 rounded-full border-2 border-gray-300 hover:border-teal-600 font-medium transition">Health Devices</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Grid -->
+<section class="py-8 md:py-12">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="text-xl md:text-2xl font-bold text-gray-800">Product Catalog</h3>
+      <span id="productCount" class="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">45 items</span>
+    </div>
+    <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
+    <div id="noResults" class="hidden text-center py-16">
+      <i class="fas fa-box-open text-6xl text-gray-300 mb-4"></i>
+      <p class="text-xl text-gray-500">No products found</p>
+      <p class="text-gray-400">Try adjusting your search or filter</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 mt-16">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h4 class="text-white text-xl font-bold mb-4">ADDY's BULK</h4>
+        <p class="text-sm mb-4">Your trusted partner for quality bulk and retail products in Ghana. We offer competitive prices on fashion, beauty, home essentials and more.</p>
+        <div class="flex gap-3">
+          <a href="https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t" target="_blank" class="w-10 h-10 bg-teal-600 hover:bg-teal-700 rounded-full flex items-center justify-center transition">
+            <i class="fab fa-whatsapp text-white"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-sm">
+          <li><button onclick="filterCategory('all')" class="hover:text-teal-400 transition">All Products</button></li>
+          <li><a href="https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t" target="_blank" class="hover:text-teal-400 transition">Join WhatsApp Group</a></li>
+          <li><span class="text-gray-500">Bulk Orders Available</span></li>
+          <li><span class="text-gray-500">Nationwide Delivery</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Contact Info</h4>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-teal-500 mt-1"></i><span>Accra, Ghana</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-truck text-teal-500 mt-1"></i><span>Delivery Available Nationwide</span></li>
+          <li class="flex items-start gap-3"><i class="fab fa-whatsapp text-teal-500 mt-1"></i><span>Chat with us for prices & orders</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 text-center text-sm">
+      <p>&copy; 2026 ADDY's BULK | Accra, Ghana | Bulk & Retail | Delivery Available</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition duration-300 z-50">
+  <i class="fab fa-whatsapp text-3xl"></i>
+</a>
+
+<script>
+const whatsappGroup = 'https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t';
+
+const products = [
+  { name: 'Female Mannequin - Full Body', category: 'Mannequins & Display', desc: 'Professional display mannequin for boutique & fashion stores', imgId: 'img-0' },
+  { name: 'Male Mannequin - Torso', category: 'Mannequins & Display', desc: 'Upper body display mannequin ideal for shirts & jackets', imgId: 'img-1' },
+  { name: 'Child Mannequin Set', category: 'Mannequins & Display', desc: 'Kids clothing display mannequins - various sizes', imgId: 'img-2' },
+  { name: 'Dress Form Adjustable', category: 'Mannequins & Display', desc: 'Adjustable dressmaking mannequin for tailors', imgId: 'img-3' },
+  { name: 'Jewelry Display Stand', category: 'Mannequins & Display', desc: 'Elegant necklace & ring display busts', imgId: 'img-4' },
+  { name: 'Ladies Shapewear Bodysuit', category: 'Fashion & Shapewear', desc: 'Seamless tummy control full body shaper', imgId: 'img-5' },
+  { name: 'Waist Trainer Belt', category: 'Fashion & Shapewear', desc: 'High compression waist trimmer for workouts', imgId: 'img-6' },
+  { name: 'Butt Lifter Shorts', category: 'Fashion & Shapewear', desc: 'Seamless padded butt enhancement underwear', imgId: 'img-7' },
+  { name: 'Men Slimming Vest', category: 'Fashion & Shapewear', desc: 'Compression tank top for belly control', imgId: 'img-8' },
+  { name: 'Thermal Shapewear Set', category: 'Fashion & Shapewear', desc: 'Winter warm body shaper leggings & top', imgId: 'img-9' },
+  { name: 'Silk Hair Bonnet', category: 'Beauty & Health', desc: 'Satin bonnet for hair protection & care', imgId: 'img-10' },
+  { name: 'Facial Steamer', category: 'Beauty & Health', desc: 'Nano ionic steamer for deep pore cleansing', imgId: 'img-11' },
+  { name: 'Electric Foot Massager', category: 'Beauty & Health', desc: 'Shiatsu roller massager for pain relief', imgId: 'img-12' },
+  { name: 'Collagen Face Mask Set', category: 'Beauty & Health', desc: 'Anti-aging hydrating sheet masks pack', imgId: 'img-13' },
+  { name: 'Hair Growth Oil', category: 'Beauty & Health', desc: 'Natural herbs formula for hair regrowth', imgId: 'img-14' },
+  { name: 'Makeup Brush Set 12pcs', category: 'Beauty & Health', desc: 'Professional synthetic brush kit with case', imgId: 'img-15' },
+  { name: 'Collapsible Storage Box', category: 'Home & Storage', desc: 'Foldable fabric organizer for wardrobe', imgId: 'img-16' },
+  { name: 'Hanging Closet Organizer', category: 'Home & Storage', desc: '5-shelf hanging storage for clothes & shoes', imgId: 'img-17' },
+  { name: 'Vacuum Storage Bags', category: 'Home & Storage', desc: 'Space saver bags for bedding & clothing', imgId: 'img-18' },
+  { name: 'Shoe Rack - 4 Tier', category: 'Home & Storage', desc: 'Metal frame shoe organizer shelf', imgId: 'img-19' },
+  { name: 'Underbed Storage Box', category: 'Home & Storage', desc: 'Large capacity rolling container with lid', imgId: 'img-20' },
+  { name: 'Wall Mounted Organizer', category: 'Home & Storage', desc: 'Multipurpose kitchen & bathroom organizer', imgId: 'img-21' },
+  { name: 'Portable Blender', category: 'Kitchen Appliances', desc: 'USB rechargeable juicer cup 400ml', imgId: 'img-22' },
+  { name: 'Electric Kettle 2L', category: 'Kitchen Appliances', desc: 'Stainless steel fast boil auto shut-off', imgId: 'img-23' },
+  { name: 'Air Fryer 4L', category: 'Kitchen Appliances', desc: 'Oil-free healthy cooking machine', imgId: 'img-24' },
+  { name: 'Rice Cooker Deluxe', category: 'Kitchen Appliances', desc: 'Non-stick pot with steamer basket', imgId: 'img-25' },
+  { name: 'Food Chopper Electric', category: 'Kitchen Appliances', desc: '1.8L meat & vegetable grinder', imgId: 'img-26' },
+  { name: 'Sandwich Maker', category: 'Kitchen Appliances', desc: '3-in-1 grill, waffle & sandwich press', imgId: 'img-27' },
+  { name: 'Ladies Handbag - Leather', category: 'Bags & Accessories', desc: 'Elegant tote bag with multiple compartments', imgId: 'img-28' },
+  { name: 'Travel Duffle Bag', category: 'Bags & Accessories', desc: 'Waterproof weekend gym & travel bag', imgId: 'img-29' },
+  { name: 'Backpack - Anti Theft', category: 'Bags & Accessories', desc: 'USB charging laptop backpack with lock', imgId: 'img-30' },
+  { name: 'Waist Bag Unisex', category: 'Bags & Accessories', desc: 'Sport running fanny pack waterproof', imgId: 'img-31' },
+  { name: 'Cosmetic Travel Case', category: 'Bags & Accessories', desc: 'Professional makeup train case with divider', imgId: 'img-32' },
+  { name: 'Wallet Set Women', category: 'Bags & Accessories', desc: '3-piece PU leather purse & card holder', imgId: 'img-33' },
+  { name: 'Educational Robot Toy', category: 'Kids & Toys', desc: 'STEM programmable dancing robot for kids', imgId: 'img-34' },
+  { name: 'Kids Tablet 7-inch', category: 'Kids & Toys', desc: 'Learning tablet with parental control', imgId: 'img-35' },
+  { name: 'Magic Water Drawing Mat', category: 'Kids & Toys', desc: 'Mess-free painting mat with pens', imgId: 'img-36' },
+  { name: 'Building Blocks Set', category: 'Kids & Toys', desc: '100pcs educational magnetic tiles', imgId: 'img-37' },
+  { name: 'Remote Control Car', category: 'Kids & Toys', desc: 'Rechargeable 4WD drift stunt car', imgId: 'img-38' },
+  { name: 'Digital Blood Pressure Monitor', category: 'Health Devices', desc: 'Automatic arm cuff BP machine', imgId: 'img-39' },
+  { name: 'Infrared Thermometer', category: 'Health Devices', desc: 'Non-contact forehead temperature gun', imgId: 'img-40' },
+  { name: 'Pulse Oximeter', category: 'Health Devices', desc: 'Fingertip blood oxygen saturation meter', imgId: 'img-41' },
+  { name: 'Neck Massager Pillow', category: 'Health Devices', desc: 'Electric heated shiatsu neck massager', imgId: 'img-0' },
+  { name: 'Compression Leg Massager', category: 'Health Devices', desc: 'Air pressure calf & foot circulation machine', imgId: 'img-1' },
+  { name: 'Smart Scale Digital', category: 'Health Devices', desc: 'Bluetooth body fat analyzer scale', imgId: 'img-2' },
+];
+
+let filteredProducts = [...products];
+
+function getImageSrc(imgId) {
+  const img = document.getElementById(imgId);
+  return img ? img.src : '';
+}
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  const noResults = document.getElementById('noResults');
+  const count = document.getElementById('productCount');
+  
+  if (filteredProducts.length === 0) {
+    grid.innerHTML = '';
+    noResults.classList.remove('hidden');
+    count.textContent = '0 items';
+    return;
+  }
+  
+  noResults.classList.add('hidden');
+  count.textContent = `${filteredProducts.length} ${filteredProducts.length === 1 ? 'item' : 'items'}`;
+  
+  grid.innerHTML = filteredProducts.map((product, idx) => `
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover fade-in">
+      <div class="relative overflow-hidden bg-gray-100">
+        <img src="${getImageSrc(product.imgId)}" alt="${product.name}" class="product-img w-full hover:scale-110 transition duration-500">
+        <span class="absolute top-2 right-2 bg-teal-600 text-white text-xs px-2 py-1 rounded-full">${product.category.split(' & ')[0]}</span>
+      </div>
+      <div class="p-3 md:p-4">
+        <h4 class="font-semibold text-sm md:text-base mb-1 line-clamp-2 min-h-[2.5rem]">${product.name}</h4>
+        <p class="text-xs text-gray-600 mb-3 line-clamp-2 min-h-[2rem]">${product.desc}</p>
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-teal-700 font-bold text-sm">Contact for Price</span>
+          <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">In Stock</span>
+        </div>
+        <a href="${whatsappGroup}&text=${encodeURIComponent('Hi! I want to order: ' + product.name)}" target="_blank" class="w-full bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 transition duration-300">
+          <i class="fab fa-whatsapp"></i>
+          <span>Order via WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCategory(category) {
+  const buttons = document.querySelectorAll('.category-btn');
+  buttons.forEach(btn => {
+    if (btn.dataset.category === category) {
+      btn.classList.add('active');
+      btn.classList.remove('border-gray-300');
+      btn.classList.add('border-teal-600');
+    } else {
+      btn.classList.remove('active');
+      btn.classList.add('border-gray-300');
+      btn.classList.remove('border-teal-600');
+    }
+  });
+  
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  
+  if (category === 'all') {
+    filteredProducts = products.filter(p => 
+      p.name.toLowerCase().includes(searchTerm) || 
+      p.desc.toLowerCase().includes(searchTerm)
+    );
+  } else {
+    filteredProducts = products.filter(p => 
+      p.category === category && 
+      (p.name.toLowerCase().includes(searchTerm) || p.desc.toLowerCase().includes(searchTerm))
+    );
+  }
+  
+  renderProducts();
+  window.scrollTo({ top: document.getElementById('productsGrid').offsetTop - 200, behavior: 'smooth' });
+}
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+  filterCategory(activeCategory);
+});
+
+document.querySelectorAll('.category-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterCategory(btn.dataset.category);
+  });
+});
+
+// Initial render
+window.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+});
+</script>
+
+</body>
+</html>
