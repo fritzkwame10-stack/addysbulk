@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADDY's BULK - Wholesale & Retail Catalog</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+.product-card:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.1);transition:all .3s}
+.product-img{aspect-ratio:1/1;object-fit:cover}
+.filter-btn.active{background-color:#0D9488;color:white}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-teal-600 text-white p-4 sticky top-0 z-50 shadow-md">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold">ADDY's BULK</h1>
+        <p class="text-sm text-teal-100">Bulk & Retail | Delivery Available in Accra, Ghana</p>
+      </div>
+      <a href="https://chat.whatsapp.com/HXw41hnc1n1LqXvsK3zdMG?mode=gi_t" target="_blank" class="bg-white text-teal-600 px-4 py-2 rounded-lg font-semibold hover:bg-teal-50 transition">
+        Join Our WhatsApp Group
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto p-4">
+  <div class="mb-6 bg-white p-4 rounded-lg shadow">
+    <input type="text" id="search" placeholder="Search products..." class="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-teal-500">
+    <div class="flex flex-wrap gap-2" id="filters">
+      <button data-cat="all" class="filter-btn active bg-teal-600 text-white px-4 py-2 rounded-lg text-sm">All Products</button>
+      <button data-cat="mannequins" class="filter-btn bg-gray-200 px-4 py-2 rounded-lg text-sm">Mannequins & Display</button>
+      <button data-cat="fashion" class="filter-btn bg-gray-200 px-4 py-2 rounded-lg text-sm">Fashion & Shapewear</button>
+      <button data-cat="beauty" class="filter-btn bg-gray-200 px-4 py-2 rounded-lg text-sm">Beauty & Health</button>
+      <button data-cat="home" class="filter-btn bg-gray-200 px-4 py-2 rounded-lg text-sm">Home & Storage</button>
+      <button data-cat="kitchen" class="filter-btn bg-gray-200 px-4 py-2 rounded-lg text-sm">Kitchen Appliances</button>
+      <button data-cat="bags" class="filter-btn bg-gray-200 px-4 py-2 rounded-lg text-sm">Bags & Accessories</button>
+      <button data-cat="kids" class="filter-btn bg-gray-200 px-4 py-2 rounded-lg text-sm">Kids & Toys</button>
+      <button data-cat="health" class="filter-btn bg-gray-200 px-4 py-2 rounded-lg text-sm">Health Devices</button>
+    </div>
+  </div>
+
+  <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+</main>
+
+<footer class="bg-gray-800 text-white text-center p-6 mt-12">
+  <p class="font-semibold">© 2026 ADDY's BULK</p>
+  <p class="text-sm text-gray-400">Accra, Ghana | Bulk & Retail | Delivery Available</p>
+  <p class="text-sm text-gray-400 mt-2">WhatsApp: +233 59 573 6002</p>
+</footer>
+
+<script>
+const products = [
+{id:1,name:"Full-Body Male Mannequin",desc:"Black with gold mesh head, adjustable stand, 190cm",cat:"mannequins"},
+{id:2,name:"High-Waist Shapewear Shorts",desc:"Nude & black, tummy control with hook closure",cat:"fashion"},
+{id:3,name:"Black Lace 2-Piece Sleepwear Set",desc:"Cami top + shorts with button detail",cat:"fashion"},
+{id:4,name:"Male Torso Mannequin",desc:"On stand with measurements, 62cm height",cat:"mannequins"},
+{id:5,name:"Electric Hot Pot",desc:"Red square with glass lid, non-stick coating",cat:"kitchen"},
+{id:6,name:"Red Lace Pajama Set",desc:"Crop top + floral shorts",cat:"fashion"},
+{id:7,name:"Synthetic Hair Bundle",desc:"Dark brown spiral curls",cat:"beauty"},
+{id:8,name:"Strapless Silicone Bra",desc:"Invisible push-up STB BOOB LADY with box",cat:"fashion"},
+{id:9,name:"Kids Electronic Piggy Bank",desc:"Red ATM safe with password & keypad",cat:"kids"},
+{id:10,name:"Silicone Kitchen Utensils Set",desc:"12pcs mint green with holder",cat:"kitchen"},
+{id:11,name:"Nature's Beauty Whitening Gummies",desc:"Strawberry flavor, 60 count",cat:"beauty"},
+{id:12,name:"Gold Ceramic Hot Comb",desc:"High Heat, 20 temperature settings",cat:"beauty"},
+{id:13,name:"22-Piece Ceramic Dinnerware Set",desc:"White with black rim, 6-person set",cat:"kitchen"},
+{id:14,name:"Electric Kettles Set",desc:"4 colors: white, navy, anti-scald white, black",cat:"kitchen"},
+{id:15,name:"Mesh Mary Jane Flats",desc:"Black, white, yellow, red, nude with gold buckle",cat:"fashion"},
+{id:16,name:"White Quilted Mini Handbag",desc:"Pearl/bow charm, gold hardware",cat:"bags"},
+{id:17,name:"Pink 3-Piece Athleisure Set",desc:"Hoodie, crop top, shorts",cat:"fashion"},
+{id:18,name:"Red/Beige Structured Handbag",desc:"Gold handle + chain strap",cat:"bags"},
+{id:19,name:"Designer-Style Bucket Bag",desc:"Red/cream with bamboo handles + dog charm",cat:"bags"},
+{id:20,name:"Mini Box Crossbody Bags",desc:"Pink, black, denim, grey with chain straps",cat:"bags"},
+{id:21,name:"Full-Body Female Mannequin",desc:"Slim waist, no head/hands, 166cm",cat:"mannequins"},
+{id:22,name:"Gold Female Torso Mannequin",desc:"On adjustable stand, 8KG",cat:"mannequins"},
+{id:23,name:"Lace Babydoll Lingerie Set",desc:"Black, green, white, red options",cat:"fashion"},
+{id:24,name:"Mini Portable Sewing Machine",desc:"White/purple with kit + extension table",cat:"home"},
+{id:25,name:"Modular Plastic Wardrobe",desc:"12-cube with labels: Top, Under, Socks, Shoes",cat:"home"},
+{id:26,name:"RAF Deep Fryer 3.0L",desc:"2000W stainless steel with basket",cat:"kitchen"},
+{id:27,name:"7-in-1 Vegetable Chopper",desc:"Mandoline slicer with container",cat:"kitchen"},
+{id:28,name:"RAF Deep Fryer 3.5L",desc:"2000W rectangular model",cat:"kitchen"},
+{id:29,name:"5ml Perfume Atomizer Bottles",desc:"8 colors, travel spray",cat:"home"},
+{id:30,name:"Multi-Layer Dust-Proof Shoe Rack",desc:"Clear drawers, metal frame with handles",cat:"home"},
+{id:31,name:"Hair, Skin & Nails Gummies",desc:"Nature Care A/B/C: Strawberry, Orange, Collagen 100mg",cat:"beauty"},
+{id:32,name:"Digital Blood Pressure Monitor",desc:"WHO indicator, arm cuff, auto reading",cat:"health"},
+{id:33,name:"3-Piece Lounge Set",desc:"Floral crop top + shorts + hair bonnet, all sizes",cat:"fashion"},
+{id:34,name:"Silver Crest Infrared Cooker",desc:"SC-7032, wood finish, touch controls",cat:"kitchen"},
+{id:35,name:"Summer Beach Tote Bags & Hats Set",desc:"Striped woven bags + sun hats",cat:"bags"},
+{id:36,name:"Luxury Plush Fleece Blanket",desc:"Grey, thick ribbed, anti-static",cat:"home"},
+{id:37,name:"Cast Iron Cookware Set",desc:"7-piece teal enamel, pots, pans, grill",cat:"kitchen"}
+];
+
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const filterBtns = document.querySelectorAll('.filter-btn');
+let activeCat = 'all';
+
+function render(){
+  const q = search.value.toLowerCase();
+  grid.innerHTML = '';
+  products.filter(p => {
+    const matchCat = activeCat === 'all' || p.cat === activeCat;
+    const matchSearch = p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+    return matchCat && matchSearch;
+  }).forEach(p => {
+    const msg = `Hi ADDY's BULK, I'm interested in ${p.name}`;
+    grid.innerHTML += `
+    <div class="product-card bg-white rounded-lg shadow">
+      <img src="images/${p.id}.jpeg" alt="${p.name}" class="product-img w-full rounded-t-lg" loading="lazy">
+      <div class="p-4">
+        <h3 class="font-semibold text-gray-800 mb-1">${p.name}</h3>
+        <p class="text-sm text-gray-600 mb-3">${p.desc}</p>
+        <p class="text-teal-600 font-bold mb-3">Contact for Price</p>
+        <a href="https://wa.me/233595736002?text=${encodeURIComponent(msg)}" target="_blank" class="block w-full bg-teal-600 text-white text-center py-2 rounded-lg hover:bg-teal-700 transition">
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>`;
+  });
+}
+
+search.addEventListener('input', render);
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => {b.classList.remove('active','bg-teal-600','text-white');b.classList.add('bg-gray-200')});
+    btn.classList.add('active','bg-teal-600','text-white');btn.classList.remove('bg-gray-200');
+    activeCat = btn.dataset.cat;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>
